@@ -21,7 +21,7 @@ namespace RedArbor.Infrastructure.Repository
         /// <returns></returns>
         public async Task<Employee> GetByIdAsync(int id)
         {
-            return await _redArborDbContext.Employee.FindAsync(id);
+            return await _redArborDbContext.Employee.Include(w => w.Company).FirstOrDefaultAsync(e => e.Id == id);
         }
 
         /// <summary>
