@@ -28,6 +28,7 @@ namespace RedArbor.Infrastructure.Profiles
             CreateMap<Employee, EmployeeConsultarDTO>().ReverseMap();
             CreateMap<EmployeeCrearDTO, Employee>();
             CreateMap<EmployeeActualizarDTO, Employee>();
+            CreateMap<EmployeeFiltrarDTO, Employee>();
         }
     }
 }

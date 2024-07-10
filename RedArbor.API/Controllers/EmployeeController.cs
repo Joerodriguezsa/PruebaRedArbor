@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RedArbor.Application.Interface.IRepository;
 using RedArbor.Application.Interface.IService;
+using RedArbor.Application.Service;
 using RedArbor.Domain.DTO;
 using RedArbor.Domain.Entities;
 
@@ -70,6 +72,14 @@ namespace RedArbor.API.Controllers
         {
             var Employeees = await _EmployeeService.GetAllAsync();
             var EmployeeConsultarDTOs = _mapper.Map<List<EmployeeConsultarDTO>>(Employeees);
+            return Ok(EmployeeConsultarDTOs);
+        }
+
+        [HttpGet("filter")]
+        public async Task<ActionResult<List<EmployeeConsultarDTO>>> GetFiltered([FromQuery] EmployeeFiltrarDTO filtro)
+        {
+            var Employees = await _EmployeeService.GetFilteredAsync(filtro);
+            var EmployeeConsultarDTOs = _mapper.Map<List<EmployeeConsultarDTO>>(Employees);
             return Ok(EmployeeConsultarDTOs);
         }
     }

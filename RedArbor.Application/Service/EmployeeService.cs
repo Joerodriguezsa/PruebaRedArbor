@@ -1,5 +1,6 @@
 ﻿using RedArbor.Application.Interface.IRepository;
 using RedArbor.Application.Interface.IService;
+using RedArbor.Domain.DTO;
 using RedArbor.Domain.Entities;
 
 namespace RedArbor.Application.Service
@@ -36,6 +37,10 @@ namespace RedArbor.Application.Service
         public async Task<bool> DeleteAsync(int id)
         {
             return await _EmployeeRepository.DeleteAsync(id);
+        }
+        public async Task<List<Employee>> GetFilteredAsync(EmployeeFiltrarDTO criteria)
+        {
+            return await _EmployeeRepository.GetFilteredAsync(criteria);
         }
     }
 }

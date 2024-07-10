@@ -1,4 +1,5 @@
-﻿using RedArbor.Domain.Entities;
+﻿using RedArbor.Domain.DTO;
+using RedArbor.Domain.Entities;
 
 namespace RedArbor.Application.Interface.IRepository
 {
@@ -9,5 +10,6 @@ namespace RedArbor.Application.Interface.IRepository
         Task CreateAsync(Employee Employee);
         Task<Employee> UpdateAsync(Employee Employee);
         Task<bool> DeleteAsync(int id);
+        Task<List<Employee>> GetFilteredAsync(EmployeeFiltrarDTO criteria);
     }
 }

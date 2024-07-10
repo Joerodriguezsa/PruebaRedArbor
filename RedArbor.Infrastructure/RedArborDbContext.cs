@@ -21,10 +21,7 @@ namespace RedArbor.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfiguration(new MatriculaMap());
-            //modelBuilder.ApplyConfiguration(new ProgramaAcademicoMap());
-            //modelBuilder.ApplyConfiguration(new AspiranteMap());
-            //modelBuilder.ApplyConfiguration(new StatusMap());
+            modelBuilder.Entity<Employee>().HasOne(e => e.Company).WithMany().HasForeignKey(e => e.CompanyId);
         }
 
         public DbSet<Status> Status { get; set; }

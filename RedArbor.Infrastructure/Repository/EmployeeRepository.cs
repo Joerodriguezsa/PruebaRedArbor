@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RedArbor.Application.Interface.IRepository;
+using RedArbor.Domain.DTO;
 using RedArbor.Domain.Entities;
 using System.Data;
 
@@ -116,5 +117,63 @@ namespace RedArbor.Infrastructure.Repository
         {
             return _redArborDbContext.Employee.Any(e => e.Id == id);
         }
+
+        /// <summary>
+        /// Filtra los empleados según los criterios proporcionados
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        public async Task<List<Employee>> GetFilteredAsync(EmployeeFiltrarDTO criteria)
+        {
+            IQueryable<Employee> query = _redArborDbContext.Employee.Include(w => w.Company);
+
+            if (criteria.CompanyId.HasValue)
+            {
+                query = query.Where(e => e.CompanyId == criteria.CompanyId.Value);
+            }
+
+            if (!string.IsNullOrEmpty(criteria.CompanyName))
+            {
+                query = query.Where(e => e.Company.CompanyName.Contains(criteria.CompanyName));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Email))
+            {
+                query = query.Where(e => e.Email.Contains(criteria.Email));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Fax))
+            {
+                query = query.Where(e => e.Fax.Contains(criteria.Fax));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Name))
+            {
+                query = query.Where(e => e.Name.Contains(criteria.Name));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Username))
+            {
+                query = query.Where(e => e.Username.Contains(criteria.Username));
+            }
+
+            if (criteria.RoleId.HasValue)
+            {
+                query = query.Where(e => e.RoleId == criteria.RoleId.Value);
+            }
+
+            if (criteria.StatusId.HasValue)
+            {
+                query = query.Where(e => e.StatusId == criteria.StatusId.Value);
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Telephone))
+            {
+                query = query.Where(e => e.Telephone.Contains(criteria.Telephone));
+            }
+
+            return await query.ToListAsync();
+        }
+
     }
 }
