@@ -5,7 +5,7 @@ namespace RedArbor.Domain.DTO
     /// <summary>
     /// Crear Employee DTO
     /// </summary>
-    public class EmployeeCrerDTO
+    public class EmployeeCrearDTO
     {
         /// <summary>
         /// Campo relacionado Compañia Id

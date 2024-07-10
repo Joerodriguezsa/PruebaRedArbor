@@ -11,7 +11,7 @@ namespace RedArbor.Domain.DTO
     /// <summary>
     /// Consultar Employee DTO
     /// </summary>
-    public class EmployeeConsultar
+    public class EmployeeConsultarDTO
     {
         /// <summary>
         /// Id de la tabla
@@ -101,8 +101,7 @@ namespace RedArbor.Domain.DTO
         public string Username { get; set; }
 
         /// <summary>
-        /// Relación con la tabla Company
-        /// (clave foránea).
+        /// Relación con la tabla Company (clave foránea).
         /// </summary>
         public virtual Company Company { get; set; }
     }

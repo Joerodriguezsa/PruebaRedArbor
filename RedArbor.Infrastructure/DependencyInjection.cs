@@ -18,11 +18,13 @@ namespace RedArbor.Infrastructure
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IPortalService, PortalService>();
             services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
 
             services.AddTransient<IStatusRepository, StatusRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IPortalRepository, PortalRepository>();
             services.AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             return services;
 
