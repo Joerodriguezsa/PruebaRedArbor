@@ -27,7 +27,6 @@ namespace RedArbor.Infrastructure
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             return services;
-
         }
     }
 }
